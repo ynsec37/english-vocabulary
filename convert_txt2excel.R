@@ -13,7 +13,8 @@ list.files(path = "./", pattern = "\\.txt$", full.names = TRUE) |>
         word = split_lines[, 1],
         meaning = split_lines[, 2],
         stringsAsFactors = FALSE
-      )
+      ) |>
+        dplyr::distinct(word, .keep_all = TRUE)
     }
   ) |>
   openxlsx::write.xlsx(
